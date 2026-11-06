@@ -1,0 +1,9 @@
+{
+  "name": "smart-ambulance-dispatch-bd",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server/server.js",
+    "start:windows": "start.cmd"
+  }
+}

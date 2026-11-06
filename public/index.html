@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Ambulance Dispatch | Bangladesh</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <div class="brand">🚑 Smart Ambulance Dispatch & Route Optimizer</div>
+      <div class="badge">Hospitals & response hubs across Bangladesh</div>
+    </header>
+
+    <div class="main-layout">
+      <!-- Control Panel -->
+      <div class="sidebar">
+        <h3>🚨 Emergency Dispatch Controller</h3>
+        
+        <label for="startNode">Start Location (select or click the map)</label>
+        <select id="startNode" disabled>
+          <option value="">Loading locations...</option>
+        </select>
+
+        <label for="endLocation">Destination Location</label>
+        <select id="endLocation" disabled>
+          <option value="">Loading locations...</option>
+        </select>
+
+        <label for="mapClickTarget">Map click selects</label>
+        <select id="mapClickTarget">
+          <option value="startNode">Start location</option>
+          <option value="endLocation">Destination location</option>
+        </select>
+
+        <label for="triageLevel">Triage Priority</label>
+        <select id="triageLevel">
+          <option value="CRITICAL">Critical (ICU Request)</option>
+          <option value="URGENT">Urgent (Trauma / Stroke)</option>
+          <option value="NORMAL">Normal Transfer</option>
+        </select>
+
+        <button id="dispatchBtn" disabled>Calculate Shortest Route & Dispatch</button>
+        <small class="route-disclaimer">Choose any mapped location for either endpoint. Red shows the road route; dashed yellow shows the Dijkstra path. Online routing; no live traffic.</small>
+
+        <hr>
+
+        <h3>📊 DSA Live Operations</h3>
+        <div class="dsa-controls">
+          <button id="sortBtn" type="button">Run Sort on Dispatches</button>
+          <button id="searchBtn" type="button">Binary Search ICU Tokens</button>
+        </div>
+        <div id="outputBox" role="status" aria-live="polite">Loading Bangladesh locations...</div>
+      </div>
+
+      <!-- Map Display -->
+      <div id="map" role="application" aria-label="Map of Bangladesh hospitals and response locations"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
